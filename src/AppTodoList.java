@@ -6,7 +6,7 @@ public class AppTodoList {
 
 
     public static void main(String[] args) {
-        testViewAddTodoList();
+        viewShowTodoList();
     }
 
     /**
@@ -150,7 +150,7 @@ public class AppTodoList {
         }
     }
 
-    public static void testViewTodoList(){
+    public static void testViewTodoList() {
         addTodoList("Satu");
         addTodoList("Dua");
         addTodoList("Tiga");
@@ -166,14 +166,14 @@ public class AppTodoList {
         System.out.println("MENAMBAH TODOLIST");
 
         var todo = input("Todo (x jika batal)");
-        if (todo.equals("x")){
+        if (todo.equals("x")) {
             // batal
         } else {
             addTodoList(todo);
         }
     }
 
-    public static void testViewAddTodoList(){
+    public static void testViewAddTodoList() {
         addTodoList("satu");
         addTodoList("dua");
         viewAddTodoList();
@@ -182,12 +182,32 @@ public class AppTodoList {
     }
 
 
-
     /**
      * Menampilkan view Hapus todo list
      */
     public static void viewRemoveTodoList() {
+        System.out.println("MENGHAPUS TODOLIST");
 
+        var number = input("Nomer yang Dihapus (x jika batal)");
+        if (number.equals("x")) {
+            //batal
+        } else {
+            boolean success = removeTodoList(Integer.valueOf(number));
+            if (!success) {
+                System.out.println("Gagal menghapus todolist " + number);
+            }
+        }
     }
 
+    public static void testViewRemoveTodoList(){
+        addTodoList("satu");
+        addTodoList("dua");
+        addTodoList("tiga");
+
+        showTodoList();
+
+        viewRemoveTodoList();
+
+        showTodoList();
+    }
 }
